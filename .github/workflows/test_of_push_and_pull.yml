@@ -5,6 +5,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 env:
   FILENAME: README.md
@@ -15,23 +19,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.8'
 
+      - name: Determine catalogue validation scope
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: python scripts/readme_scope.py
+
       - name: Install dependencies
+        if: steps.scope.outputs.required == 'true'
         run: python -m pip install -r scripts/requirements.txt
 
       - name: Validate Markdown format
+        if: steps.scope.outputs.required == 'true'
         run: python scripts/validate/format.py ${FILENAME}
 
       - name: Validate pull request changes
         run: scripts/github_pull_request.sh ${{ github.repository }} ${{ github.event.pull_request.number }} ${FILENAME}
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && steps.scope.outputs.required == 'true'
 
       - name: Checking if push changes are duplicated
         run: python scripts/validate/links.py ${FILENAME} --only_duplicate_links_checker
-        if: github.event_name == 'push'
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && steps.scope.outputs.required == 'true'

@@ -3,8 +3,7 @@ name: Research API registry offline checks
 on:
   pull_request:
     paths:
-      - 'research/api_registry.json'
-      - 'research/validate_registry.py'
+      - 'research/**'
       - '.github/workflows/research-api-registry.yml'
   workflow_dispatch:
 
