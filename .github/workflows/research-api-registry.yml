@@ -1,0 +1,23 @@
+name: Research API registry offline checks
+
+on:
+  pull_request:
+    paths:
+      - 'research/**'
+      - '.github/workflows/research-api-registry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry-offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate offline catalogue structure without network calls
+        run: python3 research/validate_registry.py

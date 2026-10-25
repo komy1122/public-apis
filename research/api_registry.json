@@ -1,0 +1,198 @@
+{
+  "schema_version": "0.1.0",
+  "as_of": "2026-10-25",
+  "meaning": "curated research candidate catalogue; not proof of external API availability or pricing",
+  "providers": [
+    {
+      "id": "openalex",
+      "domain": "academic",
+      "base_url": "https://api.openalex.org/works",
+      "auth": "optional-free-key",
+      "projects": [
+        "scholarly-evidence-graph",
+        "enterprise-ai-observatory"
+      ],
+      "use_gate": "metadata only; free budget and cursor eligibility subject to current policy",
+      "implementation_status": "prototype-or-reference",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "crossref",
+      "domain": "academic",
+      "base_url": "https://api.crossref.org/works",
+      "auth": "none",
+      "projects": [
+        "scholarly-evidence-graph",
+        "enterprise-ai-observatory",
+        "graduation-ai-network-ops"
+      ],
+      "use_gate": "DOI metadata not full-text verification; Polite Pool with email",
+      "implementation_status": "prototype-or-reference",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "semantic-scholar",
+      "domain": "academic",
+      "base_url": "https://api.semanticscholar.org/graph/v1/paper/search",
+      "auth": "optional-key",
+      "projects": [
+        "scholarly-evidence-graph"
+      ],
+      "use_gate": "citation evidence verification required; throttling",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "arxiv",
+      "domain": "academic",
+      "base_url": "https://export.arxiv.org/api/query",
+      "auth": "none",
+      "projects": [
+        "scholarly-evidence-graph"
+      ],
+      "use_gate": "preprint; not necessarily peer reviewed; observe official pacing",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "uspto-odp",
+      "domain": "patent",
+      "base_url": "https://data.uspto.gov/",
+      "auth": "conditional",
+      "projects": [
+        "enterprise-ai-observatory"
+      ],
+      "use_gate": "PatentsView migration; legacy API disabled pending live check",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "world-bank",
+      "domain": "macro",
+      "base_url": "https://api.worldbank.org/v2/",
+      "auth": "none",
+      "projects": [
+        "workforce-competency-labor-mobility",
+        "enterprise-ai-observatory"
+      ],
+      "use_gate": "country-level context not firm-level causal measure",
+      "implementation_status": "prototype-or-reference",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "fred",
+      "domain": "macro",
+      "base_url": "https://api.stlouisfed.org/fred/series/observations",
+      "auth": "free-key",
+      "projects": [
+        "enterprise-ai-observatory",
+        "workforce-competency-labor-mobility"
+      ],
+      "use_gate": "historical vintage and revisions need care",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "sec-edgar",
+      "domain": "company",
+      "base_url": "https://data.sec.gov/submissions/",
+      "auth": "none-with-user-agent",
+      "projects": [
+        "enterprise-ai-observatory"
+      ],
+      "use_gate": "SEC fair access and identifying User-Agent; disclosure is proxy",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "github-rest",
+      "domain": "developer",
+      "base_url": "https://api.github.com/",
+      "auth": "optional-token",
+      "projects": [
+        "enterprise-ai-observatory",
+        "workforce-competency-labor-mobility"
+      ],
+      "use_gate": "public OSS activity not equivalent to firm capability",
+      "implementation_status": "prototype-or-reference",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "nvd",
+      "domain": "security",
+      "base_url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+      "auth": "optional-key",
+      "projects": [
+        "graduation-ai-network-ops",
+        "risk-adaptive-delegation"
+      ],
+      "use_gate": "CVE not direct measure of actual exploitation",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "cisa-kev",
+      "domain": "security",
+      "base_url": "https://raw.githubusercontent.com/cisagov/kev-data/develop/known_exploited_vulnerabilities.json",
+      "auth": "none",
+      "projects": [
+        "graduation-ai-network-ops",
+        "risk-adaptive-delegation"
+      ],
+      "use_gate": "known exploited does not imply exploited in a given customer environment",
+      "implementation_status": "prototype-or-reference",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "abuseipdb",
+      "domain": "threat",
+      "base_url": "https://api.abuseipdb.com/api/v2/check",
+      "auth": "free-key",
+      "projects": [
+        "graduation-ai-network-ops"
+      ],
+      "use_gate": "do not submit private infrastructure IPs; approval/privacy gate",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "open-meteo",
+      "domain": "environment",
+      "base_url": "https://api.open-meteo.com/v1/forecast",
+      "auth": "none-noncommercial",
+      "projects": [
+        "graduation-ai-network-ops",
+        "enterprise-ai-observatory"
+      ],
+      "use_gate": "noncommercial licensing and attribution check",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    },
+    {
+      "id": "remoteok",
+      "domain": "labor",
+      "base_url": "https://remoteok.com/api",
+      "auth": "conditional",
+      "projects": [
+        "workforce-competency-labor-mobility"
+      ],
+      "use_gate": "remote postings selection bias, redistribution restriction; never represent as census",
+      "implementation_status": "planned",
+      "verified_live": false,
+      "policy_recheck_required": true
+    }
+  ]
+}
